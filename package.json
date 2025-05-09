@@ -1,0 +1,17 @@
+{
+  "name": "cloudflare-worker-loki",
+  "version": "0.0.0",
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "wrangler": "4.14.4"
+  },
+  "private": true,
+  "scripts": {
+    "start": "wrangler dev",
+    "format": "prettier --write '*.{json,js}' 'src/**/*.{js,ts}'",
+    "deploy": "npm run format && wrangler deploy"
+  },
+  "dependencies": {
+    "pako": "^2.1.0"
+  }
+}
