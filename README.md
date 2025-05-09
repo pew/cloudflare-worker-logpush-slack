@@ -2,6 +2,8 @@
 
 Send all your Cloudflare Logpush logs to a Slack channel using a Cloudflare Worker and the [HTTP destination](https://developers.cloudflare.com/logs/get-started/enable-destinations/http/) feature.
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/pew/cloudflare-worker-logpush-slack/)
+
 ## Create the Worker
 
 - Clone this repo
