@@ -4,6 +4,10 @@ Send all your Cloudflare Logpush logs to a Slack channel using a Cloudflare Work
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/pew/cloudflare-worker-logpush-slack/)
 
+(If you're using the Deploy button above, manually add the secret with the variable name `SLACK_BOT_TOKEN` through the dashboard.)
+
+<img width="350" alt="image" src="https://github.com/user-attachments/assets/18153c83-de47-4c26-9d00-774df3bf5609" />
+
 ## Create the Worker
 
 - Clone this repo
