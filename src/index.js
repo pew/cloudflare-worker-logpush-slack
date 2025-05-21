@@ -1,6 +1,23 @@
 import { inflate } from 'pako'
 
 const formatSlackMessage = async (log) => {
+  // Build a string with all non-empty key/value pairs
+  const lines = Object.entries(log)
+    .filter(([_, value]) => {
+      // Remove empty, null, or undefined values
+      if (value === '' || value == null) return false
+      if (Array.isArray(value) && value.length === 0) return false
+      return true
+    })
+    .map(([key, value]) => {
+      if (Array.isArray(value)) {
+        value = value.join(', ')
+      } else if (typeof value === 'object' && value !== null) {
+        value = JSON.stringify(value)
+      }
+      return `*${key}*: ${value}`
+    })
+
   return {
     blocks: [
       {
@@ -14,7 +31,23 @@ const formatSlackMessage = async (log) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `\`\`\`${typeof log === 'string' ? log : JSON.stringify(log, null, 2)}\`\`\``,
+          text: lines.join('\n') || '_No non-empty fields to display._',
+        },
+      },
+      {
+        type: 'context',
+        elements: [
+          {
+            type: 'mrkdwn',
+            text: 'Full log attached as JSON.',
+          },
+        ],
+      },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `\`\`\`${JSON.stringify(log, null, 2)}\`\`\``,
         },
       },
     ],
