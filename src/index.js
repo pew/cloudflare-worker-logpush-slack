@@ -34,22 +34,6 @@ const formatSlackMessage = async (log) => {
           text: lines.join('\n') || '_No non-empty fields to display._',
         },
       },
-      {
-        type: 'context',
-        elements: [
-          {
-            type: 'mrkdwn',
-            text: 'Full log attached as JSON.',
-          },
-        ],
-      },
-      {
-        type: 'section',
-        text: {
-          type: 'mrkdwn',
-          text: `\`\`\`${JSON.stringify(log, null, 2)}\`\`\``,
-        },
-      },
     ],
   }
 }
